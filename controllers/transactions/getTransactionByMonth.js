@@ -10,18 +10,6 @@ const getTransactionByMonth = async (req, res) => {
         'year':year,
     };
 
-    // const incomeTransactions = await Transaction.aggregate([
-    //     { $match: { ...userFilter, type: "income" } },
-    //     { $group: { _id: { month: { $month: '$month' }, year: { $year: '$year' } }, total: { $sum: '$sum' } } },
-    //     { $sort: { '_id.year': -1, '_id.month': -1 } },
-    // ]).limit(6);
-    
-    // const costsTransactions = await Transaction.aggregate([
-    //     { $match: { ...userFilter, type: "costs" } },
-    //     { $group: { _id: { month: { $month: '$month' }, year: { $year: '$year' } }, total: { $sum: '$sum' } } },
-    //     { $sort: { '_id.year': -1, '_id.month': -1 } },
-    // ]).limit(6);
-
     const incomeTransactions = await Transaction.aggregate([
         { $match: { ...userFilter, type: "income" } },
         { $sort: { '_id.year': -1, '_id.month': -1 } },
