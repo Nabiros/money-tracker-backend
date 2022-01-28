@@ -1,10 +1,8 @@
-const express = require("express");
+const router = require("express").Router();
 
 const { auth, validation, ctrlWrapper } = require("../../middleware");
 const { joiRegisterSchema, joiLoginSchema, joiGoogleSchema } = require("../../models/user");
 const { auth: ctrl } = require("../../controllers");
-
-const router = express.Router();
 
 router.post("/signup", validation(joiRegisterSchema), ctrlWrapper(ctrl.signup));
 

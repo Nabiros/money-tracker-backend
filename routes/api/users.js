@@ -1,11 +1,10 @@
-const express = require("express");
+const router = require("express").Router();
 
 const { auth, upload, ctrlWrapper } = require("../../middleware");
 const { users: ctrl } = require("../../controllers");
 
-const router = express.Router();
-
 router.get("/current", auth, ctrlWrapper(ctrl.getCurrent));
+
 router.get("/currentbalance", auth, ctrlWrapper(ctrl.getCurrentBalance));
 
 router.patch(
@@ -15,4 +14,5 @@ router.patch(
   ctrlWrapper(ctrl.updateAvatar)
 );
 router.patch("/balance", auth, ctrlWrapper(ctrl.updateBalance));
+
 module.exports = router;
